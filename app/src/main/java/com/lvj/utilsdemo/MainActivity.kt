@@ -16,6 +16,9 @@ class MainActivity : AppCompatActivity() {
         btn_constraintLayout.setOnClickListener {
             startActivity(Intent(this, ConstraintLayoutActivity::class.java))
         }
+        btn_dialog.setOnClickListener {
+            startActivity(Intent(this, AlertDialogActivity::class.java))
+        }
 
 
     }
