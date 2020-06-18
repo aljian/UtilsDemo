@@ -18,6 +18,12 @@
         </activity>
         <activity android:name=".constraint.ConstraintLayoutActivity" />
         <activity android:name=".AlertDialogActivity" />
+        <activity android:name=".view.anim.AnimationXmlActivity" />
+        <activity android:name=".view.anim.AnimationValueAnimatorActivity" />
+        <activity android:name=".view.anim.AnimationActivity" />
+        <activity android:name=".view.point.CustomPointViewActivity" />
+        <activity android:name=".view.anim.AnimationObjectActivity" />
+        <activity android:name=".view.behavior.DragViewActivity" />
     </application>
 
 </manifest>

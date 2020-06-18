@@ -5,34 +5,32 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <TextView
+    <Button
+        android:id="@+id/btn_xml"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="单选 多少dialog使用起来不怎么好用\n 谨慎选择" />
+        android:padding="16dp"
+        android:text="xml animation" />
 
     <Button
-        android:id="@+id/btn_simple"
+        android:id="@+id/btn_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="简单的dialog" />
+        android:padding="16dp"
+        android:text="valueAnimator animation" />
 
     <Button
-        android:id="@+id/btn_list"
+        android:id="@+id/btn_obj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="列表dialog" />
+        android:padding="16dp"
+        android:text="objectAnimator" />
 
     <Button
-        android:id="@+id/btn_check"
+        android:id="@+id/btn_point"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="单选dialog" />
-
-    <Button
-        android:id="@+id/btn_checks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="多选dialog" />
+        android:padding="16dp"
+        android:text="自定义带动画的一个圆" />
 
 </LinearLayout>

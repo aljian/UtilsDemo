@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.lvj.utilsdemo.util.toGsonString
+import com.lvj.utilsdemo.util.toast
 import kotlinx.android.synthetic.main.activity_alertdialog.*
 
 class AlertDialogActivity : AppCompatActivity() {
@@ -37,24 +39,26 @@ class AlertDialogActivity : AppCompatActivity() {
                 if (isChecked) toast("选择了item$which") else toast("取消选择item$which")
             }
             .setPositiveButton("确定") { dialog, which ->
-                toast("确定")
-                checkedItems.forEach {
-                    Log.i("tagtag", "checkedItems = $it")
-                }
+                toast("确定 checkedItems = ${checkedItems.toGsonString()}")
+                Log.i("tagtag", "checkedItems = ${checkedItems.toGsonString()}")
             }
             .setNegativeButton("取消", null)
             .create()
             .show()
     }
 
+    private var singleCheckPos = 0
 
     private fun showCheckDialog() {
         AlertDialog.Builder(this)
             .setTitle("单选dialog")
-            .setSingleChoiceItems(items, 0) { dialog, which ->
-                toast("选择了item$which")
+            .setSingleChoiceItems(items, singleCheckPos) { dialog, which ->
+                singleCheckPos = which
             }
-            .setPositiveButton("确定") { dialog, which -> toast("确定") }
+            .setPositiveButton("确定") { dialog, which ->
+                toast("确定 check $singleCheckPos")
+                Log.i("tagtag", "singleCheckPos = $singleCheckPos")
+            }
             .setNegativeButton("取消", null)
             .create()
             .show()
