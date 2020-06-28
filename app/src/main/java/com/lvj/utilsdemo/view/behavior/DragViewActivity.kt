@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.lvj.utilsdemo.R
 import com.lvj.utilsdemo.util.dp2px
 import com.lvj.utilsdemo.util.getScreenHeightPx
@@ -37,7 +38,7 @@ class DragViewActivity : AppCompatActivity() {
         }
         tv_home.text = ss.toString()
 
-        for (i in 0..29) {
+        for (i in 0..3) {
             mData.add("pos = $i")
         }
         rv_drag.layoutManager = LinearLayoutManager(this)

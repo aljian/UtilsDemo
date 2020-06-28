@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.lvj.utilsdemo.constraint.ConstraintLayoutActivity
 import com.lvj.utilsdemo.view.anim.AnimationActivity
 import com.lvj.utilsdemo.view.behavior.DragViewActivity
+import com.lvj.utilsdemo.view.share.ShareElementActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -33,7 +34,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, DragViewActivity::class.java))
         }
 
+        btn_shareElement.setOnClickListener {
+            startActivity(Intent(this, ShareElementActivity::class.java))
+        }
+
         setHtmlText()
+
     }
 
 
