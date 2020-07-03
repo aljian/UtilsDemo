@@ -8,7 +8,8 @@ import android.text.Spanned
 import android.text.style.AbsoluteSizeSpan
 import android.text.style.ForegroundColorSpan
 import androidx.appcompat.app.AppCompatActivity
-import com.lvj.utilsdemo.constraint.ConstraintLayoutActivity
+import androidx.lifecycle.Observer
+import com.lvj.utilsdemo.util.logi
 import com.lvj.utilsdemo.view.anim.AnimationActivity
 import com.lvj.utilsdemo.view.behavior.DragViewActivity
 import com.lvj.utilsdemo.view.share.ShareElementActivity
@@ -21,10 +22,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btn_constraintLayout.setOnClickListener {
-            startActivity(Intent(this, ConstraintLayoutActivity::class.java))
+
+            LiveDataBus.instance.post("exit", null)
+
+//            startActivity(Intent(this, ConstraintLayoutActivity::class.java))
         }
         btn_dialog.setOnClickListener {
-            startActivity(Intent(this, AlertDialogActivity::class.java))
+            LiveDataBus.instance.postSticky("sticky", null)
+
+//            startActivity(Intent(this, AlertDialogActivity::class.java))
         }
         btn_anim.setOnClickListener {
             startActivity(Intent(this, AnimationActivity::class.java))
@@ -40,6 +46,14 @@ class MainActivity : AppCompatActivity() {
 
         setHtmlText()
 
+        LiveDataBus.instance.observer("111", Observer {
+            finish()
+        }, this)
+
+
+        LiveDataBus.instance.observer("sticky", Observer {
+            logi("main sticky")
+        }, this)
     }
 
 

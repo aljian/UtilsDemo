@@ -5,8 +5,12 @@ import org.junit.Test
 class Test {
     @Test
     fun demo() {
-        val a = 0.41564545f
-        val b = 0.41564545
-        println(a - b == 0.0)
+
+        println("13888888888 hidePhoneNum = ${hidePhoneNum("13888888888")}")
+        println("null hidePhoneNum = ${hidePhoneNum(null)}")
+    }
+
+    fun hidePhoneNum(phone: String?): String? {
+        return phone?.replaceRange(3, 7, "****")
     }
 }

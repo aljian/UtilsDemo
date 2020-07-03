@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import com.lvj.utilsdemo.util.logi
 import com.lvj.utilsdemo.util.toGsonString
 import com.lvj.utilsdemo.util.toast
 import kotlinx.android.synthetic.main.activity_alertdialog.*
@@ -16,7 +18,8 @@ class AlertDialogActivity : AppCompatActivity() {
 
 
         btn_simple.setOnClickListener {
-            showSimpleDialog()
+            LiveDataBus.instance.post("111",null)
+//            showSimpleDialog()
         }
 
         btn_list.setOnClickListener {
@@ -30,6 +33,11 @@ class AlertDialogActivity : AppCompatActivity() {
         btn_checks.setOnClickListener {
             showChecskDialog()
         }
+
+
+        LiveDataBus.instance.observer("exit", Observer {
+            logi("dialog 收到了信息")
+        }, this)
     }
 
     private fun showChecskDialog() {
