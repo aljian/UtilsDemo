@@ -2,8 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lvj.utilsdemo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
     <application
-        android:allowBackup="true"
+        android:name=".MyApp"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -17,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".constraint.ConstraintLayoutActivity" />
-        <activity android:name=".AlertDialogActivity" />
+        <activity android:name=".dialog.AlertDialogActivity" />
         <activity android:name=".view.anim.AnimationXmlActivity" />
         <activity android:name=".view.anim.AnimationValueAnimatorActivity" />
         <activity android:name=".view.anim.AnimationActivity" />
@@ -25,6 +29,12 @@
         <activity android:name=".view.anim.AnimationObjectActivity" />
         <activity android:name=".view.behavior.DragViewActivity" />
         <activity android:name=".view.share.ShareElementActivity" />
+        <activity android:name=".fragment.FragmentDemoActivity" />
+        <activity android:name=".motionLayout.MotionLayoutActivity" />
+        <activity android:name=".motionLayout.MotionVpActivity" />
+        <activity android:name=".motionLayout.MotionLoginActivity" />
+        <activity android:name=".DemoActivity" />
+        <activity android:name=".retrofit.ui.HomeArticleActivity" />
     </application>
 
 </manifest>

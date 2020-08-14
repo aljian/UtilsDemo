@@ -1,4 +1,4 @@
-package com.lvj.utilsdemo.retrofit
+package com.lvj.utilsdemo.retrofit.googledemo
 
 import androidx.lifecycle.LiveData
 import retrofit2.CallAdapter

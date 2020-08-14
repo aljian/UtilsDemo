@@ -5,9 +5,30 @@ import org.junit.Test
 class Demo {
     @Test
     fun demo() {
-        val a = 12
-        val b = 1321561
-        println("a = " + a / 1000)
-        println("b = " + b / 1000)
+        val mData = mutableListOf<User>()
+        mData.add(User("111", 1))
+        mData.add(User("222", 2))
+        mData.add(User("333", 3))
+        mData.add(User("444", 3))
+        mData.add(User("555", 2))
+        mData.add(User("666", 1))
+        mData.add(User("777", 2))
+        mData.add(User("888", 3))
+        mData.add(User("999", 1))
+        mData.add(User("000", 3))
+
+        val mSelected = mutableListOf<User>()
+        mData.forEach {
+            if (it.age == 2) {
+                return@forEach
+            }
+            mSelected.add(it)
+        }
+        println("mSelected = $mSelected")
     }
 }
+
+data class User(
+    var name: String? = "",
+    var age: Int? = 0
+)

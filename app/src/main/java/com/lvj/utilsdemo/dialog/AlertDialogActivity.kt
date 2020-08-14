@@ -1,10 +1,12 @@
-package com.lvj.utilsdemo
+package com.lvj.utilsdemo.dialog
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.lvj.utilsdemo.LiveDataBus
+import com.lvj.utilsdemo.R
 import com.lvj.utilsdemo.util.logi
 import com.lvj.utilsdemo.util.toGsonString
 import com.lvj.utilsdemo.util.toast

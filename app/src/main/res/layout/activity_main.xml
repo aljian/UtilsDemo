@@ -51,11 +51,55 @@
             android:padding="16dp"
             android:text="ShareElement" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:text="fragmentDemo" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_motion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:text="MotionLayout Animation" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_motion_vp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:text="MotionLayout Animation ViewPager" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_motion_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:text="MotionLayout login" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_retrofit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:text="Retrofit" />
 
         <TextView
             android:id="@+id/tv_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/iv_main"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
 
     </LinearLayout>
 

@@ -8,8 +8,13 @@ import android.text.Spanned
 import android.text.style.AbsoluteSizeSpan
 import android.text.style.ForegroundColorSpan
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import com.lvj.utilsdemo.util.logi
+import com.lvj.utilsdemo.constraint.ConstraintLayoutActivity
+import com.lvj.utilsdemo.dialog.AlertDialogActivity
+import com.lvj.utilsdemo.fragment.FragmentDemoActivity
+import com.lvj.utilsdemo.motionLayout.MotionLayoutActivity
+import com.lvj.utilsdemo.motionLayout.MotionLoginActivity
+import com.lvj.utilsdemo.motionLayout.MotionVpActivity
+import com.lvj.utilsdemo.retrofit.ui.HomeArticleActivity
 import com.lvj.utilsdemo.view.anim.AnimationActivity
 import com.lvj.utilsdemo.view.behavior.DragViewActivity
 import com.lvj.utilsdemo.view.share.ShareElementActivity
@@ -22,15 +27,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btn_constraintLayout.setOnClickListener {
-
-            LiveDataBus.instance.post("exit", null)
-
-//            startActivity(Intent(this, ConstraintLayoutActivity::class.java))
+//            startActivity(Intent(this, DemoActivity::class.java))
+            startActivity(Intent(this, ConstraintLayoutActivity::class.java))
         }
         btn_dialog.setOnClickListener {
-            LiveDataBus.instance.postSticky("sticky", null)
-
-//            startActivity(Intent(this, AlertDialogActivity::class.java))
+            startActivity(Intent(this, AlertDialogActivity::class.java))
         }
         btn_anim.setOnClickListener {
             startActivity(Intent(this, AnimationActivity::class.java))
@@ -44,29 +45,32 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ShareElementActivity::class.java))
         }
 
+        btn_fragment.setOnClickListener {
+            startActivity(Intent(this, FragmentDemoActivity::class.java))
+        }
+
+        btn_motion.setOnClickListener {
+            startActivity(Intent(this, MotionLayoutActivity::class.java))
+        }
+
+        btn_motion_vp.setOnClickListener {
+            startActivity(Intent(this, MotionVpActivity::class.java))
+        }
+
+        btn_motion_login.setOnClickListener {
+            startActivity(Intent(this, MotionLoginActivity::class.java))
+        }
+
+        btn_retrofit.setOnClickListener {
+            startActivity(Intent(this, HomeArticleActivity::class.java))
+        }
+
         setHtmlText()
 
-        LiveDataBus.instance.observer("111", Observer {
-            finish()
-        }, this)
+        val img_url = "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2020089733,86807406&fm=26&gp=0.jpg"
 
+        GlideApp.with(this).load(img_url).circleCrop().into(iv_main)
 
-        LiveDataBus.instance.observer("sticky", Observer {
-            logi("main sticky")
-        }, this)
-    }
-
-
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     private fun setHtmlText() {
