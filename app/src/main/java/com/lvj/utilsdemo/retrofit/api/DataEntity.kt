@@ -1,6 +1,5 @@
 package com.lvj.utilsdemo.retrofit.api
 
-import com.lvj.utilsdemo.util.toGsonString
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
@@ -13,6 +12,7 @@ data class BaseEntity<T>(
     fun dataRight() = errorCode == 0
 
     fun needRelogin() = errorCode == -1001
+
 
 //    override fun toString(): String {
 //        return this.toGsonString()
@@ -70,4 +70,20 @@ data class ArticleListEntity(
 data class ArticleTags(
     var name: String? = "",
     var url: String? = ""
+)
+
+data class UserEntity(
+    var admin: Boolean? = false,
+    var chapterTops: MutableList<Any>? = mutableListOf(),
+    var coinCount: Int? = 0,
+    var collectIds: MutableList<Int>? = mutableListOf(),
+    var email: String? = "",
+    var icon: String? = "",
+    var id: Int? = 0,
+    var nickname: String? = "",
+    var password: String? = "",
+    var publicName: String? = "",
+    var token: String? = "",
+    var type: Int? = 0,
+    var username: String? = ""
 )

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">UtilsDemo</string>
+    <string name="app_service">音频播放服务</string>
+
+    <string name="ConnectException">网络异常,请稍后重试</string>
+    <string name="UnknownHostException">无网络连接,请检查网络后重试</string>
+    <string name="ElseNetException">网络异常,请稍后重试</string>
 </resources>

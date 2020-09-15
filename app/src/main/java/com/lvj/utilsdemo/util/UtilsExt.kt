@@ -2,7 +2,11 @@ package com.lvj.utilsdemo.util
 
 import android.app.ActivityManager
 import android.content.Context
+import android.content.res.Configuration
+import android.content.res.Resources
+import android.util.DisplayMetrics
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Toast
 import com.google.gson.Gson
 import java.io.File
@@ -43,6 +47,15 @@ fun Context.dp2px(value: Float): Float {
 fun Context.getScreenWidthPx() = resources.displayMetrics.widthPixels
 fun Context.getScreenHeightPx() = resources.displayMetrics.heightPixels
 
+fun Context.isPortrait(): Boolean {
+    val mOrientation: Int = applicationContext.resources.configuration.orientation
+    return mOrientation == Configuration.ORIENTATION_PORTRAIT
+}
+
+fun Context.isInLeftScreen(xPos: Int): Boolean = xPos < (this.getScreenWidthPx() / 2)
+
+fun Context.isInRightScreen(xPos: Int): Boolean = xPos > (this.getScreenWidthPx() / 2)
+
 
 fun Context.getFile() {
     val fileStreamPath = getFileStreamPath("course")
@@ -76,6 +89,11 @@ fun Context.isAppAlive(packageName: String = this.packageName): Int {
     } catch (e: Exception) {
         return 3
     }
+}
+
+fun isTablet(): Boolean {
+    return ((Resources.getSystem().configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK)
+            >= Configuration.SCREENLAYOUT_SIZE_LARGE)
 }
 
 

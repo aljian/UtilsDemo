@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lvj.utilsdemo">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
 
     <application
@@ -33,8 +36,24 @@
         <activity android:name=".motionLayout.MotionLayoutActivity" />
         <activity android:name=".motionLayout.MotionVpActivity" />
         <activity android:name=".motionLayout.MotionLoginActivity" />
-        <activity android:name=".DemoActivity" />
+        <activity android:name=".textspan.RichTextActivity" />
         <activity android:name=".retrofit.ui.HomeArticleActivity" />
+        <activity
+            android:name=".pad.TabletPhoneActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity android:name=".audio.MusicActivity" />
+        <activity android:name=".audio.MusicActivity2" />
+        <activity android:name=".retrofit.login.LoginActivity" />
+        <activity android:name=".vp.VpActivity" />
+        <activity
+            android:name=".playview.PlayActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name=".audio.MyService"
+            android:description="@string/app_service"
+            android:exported="false" />
     </application>
 
 </manifest>

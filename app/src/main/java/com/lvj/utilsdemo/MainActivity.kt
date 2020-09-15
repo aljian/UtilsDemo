@@ -1,24 +1,38 @@
 package com.lvj.utilsdemo
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.AbsoluteSizeSpan
 import android.text.style.ForegroundColorSpan
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.lvj.utilsdemo.audio.MusicActivity
 import com.lvj.utilsdemo.constraint.ConstraintLayoutActivity
 import com.lvj.utilsdemo.dialog.AlertDialogActivity
 import com.lvj.utilsdemo.fragment.FragmentDemoActivity
 import com.lvj.utilsdemo.motionLayout.MotionLayoutActivity
 import com.lvj.utilsdemo.motionLayout.MotionLoginActivity
 import com.lvj.utilsdemo.motionLayout.MotionVpActivity
+import com.lvj.utilsdemo.pad.TabletPhoneActivity
+import com.lvj.utilsdemo.playview.PlayActivity
+import com.lvj.utilsdemo.retrofit.login.LoginActivity
 import com.lvj.utilsdemo.retrofit.ui.HomeArticleActivity
+import com.lvj.utilsdemo.textspan.RichTextActivity
+import com.lvj.utilsdemo.util.logi
 import com.lvj.utilsdemo.view.anim.AnimationActivity
 import com.lvj.utilsdemo.view.behavior.DragViewActivity
 import com.lvj.utilsdemo.view.share.ShareElementActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,8 +40,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        btn_large.setOnClickListener {
+            startActivity(Intent(this, TabletPhoneActivity::class.java))
+        }
+
+        btn_login.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+
+        btn_play.setOnClickListener {
+            startActivity(Intent(this, PlayActivity::class.java))
+        }
+
         btn_constraintLayout.setOnClickListener {
-//            startActivity(Intent(this, DemoActivity::class.java))
             startActivity(Intent(this, ConstraintLayoutActivity::class.java))
         }
         btn_dialog.setOnClickListener {
@@ -64,12 +89,69 @@ class MainActivity : AppCompatActivity() {
         btn_retrofit.setOnClickListener {
             startActivity(Intent(this, HomeArticleActivity::class.java))
         }
+        btn_richtext.setOnClickListener {
+            startActivity(Intent(this, RichTextActivity::class.java))
+        }
+        btn_music.setOnClickListener {
+            startActivity(Intent(this, MusicActivity::class.java))
+        }
 
-        setHtmlText()
+
+//        setHtmlText()
+        setSpanText()
 
         val img_url = "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2020089733,86807406&fm=26&gp=0.jpg"
 
         GlideApp.with(this).load(img_url).circleCrop().into(iv_main)
+
+        val format = SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS", Locale.getDefault())
+        logi("时间 ${format.format(Date())}")
+
+
+//        dolaunch()
+
+//        getTime()
+
+        slider.addOnChangeListener { slider, value, fromUser ->
+            logi("value = $value")
+        }
+    }
+
+    private fun getTime() {
+        val s = packageManager.getPackageInfo("android", 0).firstInstallTime
+        val a = packageManager.getPackageInfo(packageName, 0).firstInstallTime
+        logi("s = $s")
+        logi("a = $a")
+    }
+
+
+    private fun dolaunch() {
+        lifecycleScope.launch {
+            logi("current thread = ${Thread.currentThread().name}")
+            withContext(Dispatchers.IO) {
+                logi("current thread = ${Thread.currentThread().name}")
+            }
+            logi("current thread = ${Thread.currentThread().name}")
+        }
+
+    }
+
+    private fun setSpanText() {
+        val ssb = SpannableStringBuilder()
+        for (i in 0 until 10) {
+            val time = "Time $i"
+            val name = "Name $i"
+            val text = "哈哈哈哈哈哈哈哈哈哈 $i"
+
+            val spanTime = SpannableString(time)
+            spanTime.setSpan(ForegroundColorSpan(Color.RED), 0, time.length, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+
+            val spanText = SpannableString(text)
+            spanText.setSpan(ForegroundColorSpan(Color.BLUE), 0, text.length, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+
+            ssb.append(spanTime).append(name).append(spanText).append("\u3000\u3000\n")
+        }
+        tv_main.text = ssb
 
     }
 
@@ -89,5 +171,10 @@ class MainActivity : AppCompatActivity() {
         ss.setSpan(s2, ss.length - b.length, ss.length, Spanned.SPAN_INCLUSIVE_INCLUSIVE)
 
         tv_main.text = ss
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        logi("MainActivity onConfigurationChanged")
     }
 }

@@ -7,7 +7,6 @@ import com.lvj.utilsdemo.retrofit.api.ArticleEntity
 import com.lvj.utilsdemo.retrofit.api.ArticleListEntity
 import com.lvj.utilsdemo.retrofit.api.BaseEntity
 import com.lvj.utilsdemo.util.logi
-import com.lvj.utilsdemo.util.toMoshiString
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types

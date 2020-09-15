@@ -7,4 +7,6 @@
     <color name="color_red">#FF0000</color>
     <color name="color_green">#00FF00</color>
     <color name="color_blue">#0000FF</color>
+
+    <color name="play_seek_bar">#00C1DE</color>
 </resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/vp_home"
+        android:icon="@drawable/draw_home"
+        android:title="主页" />
+    <item
+        android:id="@+id/vp_second"
+        android:icon="@drawable/draw_second"
+        android:title="第二页" />
+    <item
+        android:id="@+id/vp_third"
+        android:icon="@drawable/draw_third"
+        android:title="第三页" />
+    <item
+        android:id="@+id/vp_my"
+        android:icon="@drawable/draw_my"
+        android:title="我的" />
+</menu>

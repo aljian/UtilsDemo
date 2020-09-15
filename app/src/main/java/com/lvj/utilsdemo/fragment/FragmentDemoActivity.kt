@@ -51,20 +51,5 @@ class FragmentDemoActivity : AppCompatActivity() {
             mAdapter.notifyDataSetChanged()
         }
 
-        /** using [DiffUtil] */
-//        val idsOld = items.createIdSnapshot()
-//        performChanges()
-//        val idsNew = items.createIdSnapshot()
-//        DiffUtil.calculateDiff(object : DiffUtil.Callback() {
-//            override fun getOldListSize(): Int = idsOld.size
-//            override fun getNewListSize(): Int = idsNew.size
-//
-//            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-//                idsOld[oldItemPosition] == idsNew[newItemPosition]
-//
-//            override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int) =
-//                areItemsTheSame(oldItemPosition, newItemPosition)
-//        }, true).dispatchUpdatesTo(viewPager.adapter!!)
-
     }
 }

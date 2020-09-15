@@ -3,6 +3,7 @@ package com.lvj.utilsdemo
 import com.lvj.utilsdemo.bean.UserInfo
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
+import kotlin.system.measureTimeMillis
 
 fun main() {
 

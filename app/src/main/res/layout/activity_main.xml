@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,6 +11,38 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:text="手机平板" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:value="500"
+            android:stepSize="1"
+            app:labelBehavior="floating"
+            android:valueFrom="0"
+            android:valueTo="1000" />
+
+        <Button
+            android:id="@+id/btn_play"
+            android:layout_width="wrap_content"
+            android:text="playActivity"
+            android:layout_height="48dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:text="login" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_constraintLayout"
@@ -90,6 +123,30 @@
             android:layout_marginTop="16dp"
             android:padding="16dp"
             android:text="Retrofit" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_richtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:text="richText" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:text="Music" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:src="@color/color_red"
+            app:strokeColor="@android:color/black"
+            app:strokeWidth="10dp" />
 
         <TextView
             android:id="@+id/tv_main"
