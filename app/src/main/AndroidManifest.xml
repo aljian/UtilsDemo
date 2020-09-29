@@ -49,6 +49,8 @@
             android:name=".playview.PlayActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
+        <activity android:name=".RulerActivity" />
+        <activity android:name=".work.WorkDemoActivity" />
 
         <service
             android:name=".audio.MyService"

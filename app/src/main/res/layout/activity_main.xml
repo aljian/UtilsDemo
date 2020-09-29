@@ -12,6 +12,23 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/tv_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="16dp"
+            android:text="测试哈哈" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="16dp"
+            android:text="work demo" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_large"
             android:layout_width="wrap_content"
@@ -25,16 +42,15 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:value="500"
-            android:stepSize="1"
-            app:labelBehavior="floating"
             android:valueFrom="0"
-            android:valueTo="1000" />
+            android:valueTo="1000"
+            app:labelBehavior="floating" />
 
         <Button
             android:id="@+id/btn_play"
             android:layout_width="wrap_content"
-            android:text="playActivity"
-            android:layout_height="48dp"/>
+            android:layout_height="48dp"
+            android:text="playActivity" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_login"
@@ -69,12 +85,12 @@
             android:text="动画" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_behavior"
+            android:id="@+id/btn_dragView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:padding="16dp"
-            android:text="Behavior" />
+            android:text="DragView" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_shareElement"

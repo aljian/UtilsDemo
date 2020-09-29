@@ -26,6 +26,13 @@ class Demo {
         }
         println("mSelected = $mSelected")
     }
+
+    @Test
+    fun demo12(){
+        val a = 123
+        println("结果 = ${a shl 1 == 0}")
+    }
+
 }
 
 data class User(

@@ -1,4 +1,4 @@
-package com.lvj.utilsdemo.playview.view
+package com.lvj.utilsdemo.playview
 
 import android.app.Activity
 import android.content.Context
@@ -7,13 +7,11 @@ import android.util.AttributeSet
 import android.view.*
 import android.widget.FrameLayout
 import android.widget.ImageView
-import com.lvj.utilsdemo.playview.HideType
-import com.lvj.utilsdemo.playview.PlayActionListener
-import com.lvj.utilsdemo.playview.ScreenMode
-import com.lvj.utilsdemo.playview.ViewAction
 import com.lvj.utilsdemo.playview.gesture.GestureView
 import com.lvj.utilsdemo.playview.utils.NetWatchDog
 import com.lvj.utilsdemo.playview.utils.OrientationWatchDog
+import com.lvj.utilsdemo.playview.view.ControlView
+import com.lvj.utilsdemo.playview.view.TipsView
 import com.lvj.utilsdemo.util.logi
 
 class LvjPlayView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
@@ -37,6 +35,9 @@ class LvjPlayView @JvmOverloads constructor(context: Context, attrs: AttributeSe
 
     //上下控制器 返回 播放进度的seekbar等
     private var mControlView: ControlView? = null
+
+    //一些提示
+    private var mTipsView: TipsView? = null
 
     //屏幕方向监听
     private var mOrientationWatchDog: OrientationWatchDog? = null
@@ -67,6 +68,8 @@ class LvjPlayView @JvmOverloads constructor(context: Context, attrs: AttributeSe
         initGestureView()
         //控制栏
         initControlView()
+        //提示View
+        initTipsView()
         //屏幕方向监听
         initOrientationWatchdog()
         //网络监听
@@ -233,6 +236,15 @@ class LvjPlayView @JvmOverloads constructor(context: Context, attrs: AttributeSe
             }
 
         })
+    }
+
+    /**
+     * 提示View
+     */
+    private fun initTipsView() {
+        mTipsView = TipsView(context)
+        addSubView(mTipsView!!)
+        mTipsView!!.showNetChangeTipView()
     }
 
     /**

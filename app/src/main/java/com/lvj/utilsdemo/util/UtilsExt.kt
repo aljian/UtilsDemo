@@ -1,12 +1,16 @@
 package com.lvj.utilsdemo.util
 
+import android.app.Activity
 import android.app.ActivityManager
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
-import android.util.DisplayMetrics
+import android.graphics.Color
+import android.graphics.Point
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.util.Log
-import android.view.WindowManager
+import android.util.TypedValue
 import android.widget.Toast
 import com.google.gson.Gson
 import java.io.File
@@ -34,9 +38,9 @@ fun loge(msg: String, tag: String = "tagtag") {
     Log.e(tag, msg)
 }
 
-fun Context.dp2px(value: Int): Float {
+fun Context.dp2px(value: Int): Int {
     val density = resources.displayMetrics.density
-    return (value * density + 0.5f)
+    return (value * density + 0.5f).toInt()
 }
 
 fun Context.dp2px(value: Float): Float {
@@ -44,8 +48,31 @@ fun Context.dp2px(value: Float): Float {
     return (value * density + 0.5f)
 }
 
+fun Context.dpTopx(value: Float): Float {
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value, resources.displayMetrics)
+}
+
+fun Context.createRectDrawable(): Drawable {
+    return GradientDrawable().apply {
+        shape = GradientDrawable.RECTANGLE// 矩形
+        cornerRadius = 10f// 圆角
+        colors = intArrayOf(Color.parseColor("#ff00ff"), Color.parseColor("#800000ff"))//渐变色
+        gradientType = GradientDrawable.LINEAR_GRADIENT // 渐变类型
+        orientation = GradientDrawable.Orientation.LEFT_RIGHT // 渐变方向
+        setStroke(dp2px(2), Color.parseColor("#ffff00")) // 描边宽度和颜色
+    }
+}
+
+
 fun Context.getScreenWidthPx() = resources.displayMetrics.widthPixels
 fun Context.getScreenHeightPx() = resources.displayMetrics.heightPixels
+
+fun Activity.getHeightPx(): Int {
+    val p = Point()
+    windowManager.defaultDisplay.getSize(p)
+    return p.y
+}
+
 
 fun Context.isPortrait(): Boolean {
     val mOrientation: Int = applicationContext.resources.configuration.orientation

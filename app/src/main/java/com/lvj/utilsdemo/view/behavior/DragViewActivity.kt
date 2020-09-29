@@ -28,7 +28,7 @@ class DragViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drag)
 
-        defaultHeight = dp2px(256).toInt()
+        defaultHeight = dp2px(256)
         maxHeight = getScreenHeightPx() * 3 / 4
 
         val ss = StringBuffer()
@@ -48,7 +48,7 @@ class DragViewActivity : AppCompatActivity() {
             val params = neScrollView.layoutParams
             val parentV = neScrollView.parent as View
             params.height = parentV.height - defaultHeight
-            neScrollView.layoutParams = params
+//            neScrollView.layoutParams = params
         }
 
         initListener()

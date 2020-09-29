@@ -3,6 +3,7 @@ package com.lvj.utilsdemo
 import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -18,15 +19,15 @@ import com.lvj.utilsdemo.fragment.FragmentDemoActivity
 import com.lvj.utilsdemo.motionLayout.MotionLayoutActivity
 import com.lvj.utilsdemo.motionLayout.MotionLoginActivity
 import com.lvj.utilsdemo.motionLayout.MotionVpActivity
-import com.lvj.utilsdemo.pad.TabletPhoneActivity
 import com.lvj.utilsdemo.playview.PlayActivity
 import com.lvj.utilsdemo.retrofit.login.LoginActivity
 import com.lvj.utilsdemo.retrofit.ui.HomeArticleActivity
 import com.lvj.utilsdemo.textspan.RichTextActivity
-import com.lvj.utilsdemo.util.logi
+import com.lvj.utilsdemo.util.*
 import com.lvj.utilsdemo.view.anim.AnimationActivity
 import com.lvj.utilsdemo.view.behavior.DragViewActivity
 import com.lvj.utilsdemo.view.share.ShareElementActivity
+import com.lvj.utilsdemo.work.WorkDemoActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -40,8 +41,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        tv_test.shape = shape {
+            corner_radius = 10
+            gradient_colors = listOf("#ff00ff", "#800000ff")
+            shape = GradientDrawable.RECTANGLE
+            strokeAttr = Stroke(4, "#000000")
+        }
+
         btn_large.setOnClickListener {
-            startActivity(Intent(this, TabletPhoneActivity::class.java))
+
+            startActivity(Intent(this, RulerActivity::class.java))
+//            startActivity(Intent(this, TabletPhoneActivity::class.java))
+        }
+
+        btn_work.setOnClickListener {
+            startActivity(Intent(this, WorkDemoActivity::class.java))
         }
 
         btn_login.setOnClickListener {
@@ -62,7 +76,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, AnimationActivity::class.java))
         }
 
-        btn_behavior.setOnClickListener {
+        btn_dragView.setOnClickListener {
             startActivity(Intent(this, DragViewActivity::class.java))
         }
 
@@ -104,20 +118,30 @@ class MainActivity : AppCompatActivity() {
 
         GlideApp.with(this).load(img_url).circleCrop().into(iv_main)
 
-        val format = SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS", Locale.getDefault())
-        logi("时间 ${format.format(Date())}")
+
+        logi("15dp     = ${1.dp}")
+        logi("15dpTopx = ${dpTopx(1f)}")
+        logi("15dp2px  = ${dp2px(1)}")
+
+        logi("屏高 getScreenHeightPx =  ${getScreenHeightPx()}")
+        logi("屏高 getHeight =  ${getHeightPx()}")
+
 
 
 //        dolaunch()
 
-//        getTime()
+//        getFirstInstallTime()
 
         slider.addOnChangeListener { slider, value, fromUser ->
             logi("value = $value")
         }
     }
 
-    private fun getTime() {
+    private fun getFirstInstallTime() {
+
+        val format = SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS", Locale.getDefault())
+        logi("时间 ${format.format(Date())}")
+
         val s = packageManager.getPackageInfo("android", 0).firstInstallTime
         val a = packageManager.getPackageInfo(packageName, 0).firstInstallTime
         logi("s = $s")
