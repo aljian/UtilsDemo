@@ -126,6 +126,8 @@ class MainActivity : AppCompatActivity() {
         logi("屏高 getScreenHeightPx =  ${getScreenHeightPx()}")
         logi("屏高 getHeight =  ${getHeightPx()}")
 
+        logi("freeSpace = ${filesDir.freeSpace / (1024 * 1024 * 1024F)}")
+        logi("totalSpace = ${filesDir.totalSpace / (1024 * 1024 * 1024F)}")
 
 
 //        dolaunch()

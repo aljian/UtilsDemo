@@ -23,7 +23,6 @@ class LoginActivity : BaseActivity() {
         et_password.setText("Al070633")
 
         tv_login.setOnClickListener {
-            throw NullPointerException("这是测试异常")
             val name = et_userName.text
             val pw = et_password.text
             mViewModel.getUserInfo(name.toString(), pw.toString())
@@ -34,7 +33,6 @@ class LoginActivity : BaseActivity() {
             val pw = et_password.text
             mViewModel.getUserInfo(name.toString(), pw.toString(), 1)
         }
-
 
         mViewModel.loginResult.vmObserver(this) {
             onAppLoading = { logi("loading") }
