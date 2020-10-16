@@ -2,11 +2,8 @@ package com.lvj.utilsdemo.fragment
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.lvj.utilsdemo.R
-import com.lvj.utilsdemo.util.logi
 import kotlinx.android.synthetic.main.activity_fragement_demo.*
 
 class FragmentDemoActivity : AppCompatActivity() {

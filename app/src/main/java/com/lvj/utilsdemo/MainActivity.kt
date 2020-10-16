@@ -27,6 +27,7 @@ import com.lvj.utilsdemo.util.*
 import com.lvj.utilsdemo.view.anim.AnimationActivity
 import com.lvj.utilsdemo.view.behavior.DragViewActivity
 import com.lvj.utilsdemo.view.share.ShareElementActivity
+import com.lvj.utilsdemo.vp.VpActivity
 import com.lvj.utilsdemo.work.WorkDemoActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
@@ -48,9 +49,13 @@ class MainActivity : AppCompatActivity() {
             strokeAttr = Stroke(4, "#000000")
         }
 
+        tv_test.setOnClickListener {
+            startActivity(Intent(this, WebActivity::class.java))
+        }
+
         btn_large.setOnClickListener {
 
-            startActivity(Intent(this, RulerActivity::class.java))
+            startActivity(Intent(this, VpActivity::class.java))
 //            startActivity(Intent(this, TabletPhoneActivity::class.java))
         }
 
@@ -137,6 +142,7 @@ class MainActivity : AppCompatActivity() {
         slider.addOnChangeListener { slider, value, fromUser ->
             logi("value = $value")
         }
+
     }
 
     private fun getFirstInstallTime() {

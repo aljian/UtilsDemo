@@ -4,29 +4,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import com.lvj.utilsdemo.R
+import kotlinx.android.synthetic.main.custom_bottom_navigation.view.*
 
 
 class BottomNavigationView : FrameLayout {
-
-    private lateinit var ll_1: LinearLayout
-    private lateinit var tv_1: TextView
-    private lateinit var iv_1: ImageView
-
-    private lateinit var ll_2: LinearLayout
-    private lateinit var tv_2: TextView
-    private lateinit var iv_2: ImageView
-
-    private lateinit var ll_3: LinearLayout
-    private lateinit var tv_3: TextView
-    private lateinit var iv_3: ImageView
-
-    private lateinit var ll_4: LinearLayout
-    private lateinit var tv_4: TextView
-    private lateinit var iv_4: ImageView
 
     private val defaultTitles = mutableListOf("主页", "第二页", "第三页", "第四页")
     private val defaultIconDrawable = mutableListOf(
@@ -48,22 +30,6 @@ class BottomNavigationView : FrameLayout {
     }
 
     private fun findAllViews() {
-        ll_1 = findViewById(R.id.ll_1)
-        tv_1 = findViewById(R.id.tv_1)
-        iv_1 = findViewById(R.id.iv_1)
-
-        ll_2 = findViewById(R.id.ll_2)
-        tv_2 = findViewById(R.id.tv_2)
-        iv_2 = findViewById(R.id.iv_2)
-
-        ll_3 = findViewById(R.id.ll_3)
-        tv_3 = findViewById(R.id.tv_3)
-        iv_3 = findViewById(R.id.iv_3)
-
-        ll_4 = findViewById(R.id.ll_4)
-        tv_4 = findViewById(R.id.tv_4)
-        iv_4 = findViewById(R.id.iv_4)
-
         resetData()
     }
 
@@ -216,9 +182,6 @@ class BottomNavigationView : FrameLayout {
     fun setOnSelectedListener(listener: ((position: Int) -> Int)) {
         this.mListener = listener
     }
-
-
-
 
 
 }

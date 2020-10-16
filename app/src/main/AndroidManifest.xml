@@ -51,6 +51,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".RulerActivity" />
         <activity android:name=".work.WorkDemoActivity" />
+        <activity android:name=".WebActivity" />
 
         <service
             android:name=".audio.MyService"

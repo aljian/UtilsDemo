@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.lvj.utilsdemo.R
-import com.lvj.utilsdemo.view.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_layout_vp.*
 
 class VpActivity : AppCompatActivity() {
