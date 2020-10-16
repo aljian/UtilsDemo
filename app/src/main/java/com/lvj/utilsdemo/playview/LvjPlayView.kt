@@ -93,15 +93,15 @@ class LvjPlayView @JvmOverloads constructor(context: Context, attrs: AttributeSe
             val holder = it.holder
             holder.addCallback(object : SurfaceHolder.Callback {
 
-                override fun surfaceCreated(holder: SurfaceHolder?) {
+                override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
                     logi("surfaceCreated")
                 }
 
-                override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {
+                override fun surfaceDestroyed(holder: SurfaceHolder) {
                     logi("surfaceChanged")
                 }
 
-                override fun surfaceDestroyed(holder: SurfaceHolder?) {
+                override fun surfaceCreated(holder: SurfaceHolder) {
                     logi("surfaceDestroyed")
                 }
 
