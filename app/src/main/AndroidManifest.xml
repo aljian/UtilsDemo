@@ -52,6 +52,7 @@
         <activity android:name=".RulerActivity" />
         <activity android:name=".work.WorkDemoActivity" />
         <activity android:name=".WebActivity" />
+        <activity android:name=".rvcard.RvCardActivity" />
 
         <service
             android:name=".audio.MyService"

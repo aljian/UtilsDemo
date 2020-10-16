@@ -1,5 +1,11 @@
 package com.lvj.utilsdemo;
 
+import android.media.browse.MediaBrowser;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class Test {
 
 
@@ -12,5 +18,20 @@ public class Test {
             "title=\"xiaomai\" alt=\"xiaomai\" width=\"900\" height=\"600\" border=\"0\" vspace=\"0\" " +
             "style=\"width: 507px; height: 318px;\"/>";
 
+
+    private void dotest() {
+        ItemTouchHelper.Callback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.DOWN) {
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+            }
+        };
+    }
 
 }

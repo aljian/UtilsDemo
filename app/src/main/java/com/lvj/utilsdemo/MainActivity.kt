@@ -22,6 +22,7 @@ import com.lvj.utilsdemo.motionLayout.MotionVpActivity
 import com.lvj.utilsdemo.playview.PlayActivity
 import com.lvj.utilsdemo.retrofit.login.LoginActivity
 import com.lvj.utilsdemo.retrofit.ui.HomeArticleActivity
+import com.lvj.utilsdemo.rvcard.RvCardActivity
 import com.lvj.utilsdemo.textspan.RichTextActivity
 import com.lvj.utilsdemo.util.*
 import com.lvj.utilsdemo.view.anim.AnimationActivity
@@ -50,7 +51,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         tv_test.setOnClickListener {
-            startActivity(Intent(this, WebActivity::class.java))
+            startActivity(Intent(this, RvCardActivity::class.java))
+//            startActivity(Intent(this, WebActivity::class.java))
         }
 
         btn_large.setOnClickListener {
