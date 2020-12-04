@@ -3,6 +3,7 @@ package com.lvj.utilsdemo.playview
 import android.app.Activity
 import android.content.Context
 import android.content.pm.ActivityInfo
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.*
 import android.widget.FrameLayout
@@ -20,6 +21,8 @@ class LvjPlayView @JvmOverloads constructor(context: Context, attrs: AttributeSe
     init {
         initView()
     }
+
+    private lateinit var mContainer: FrameLayout
 
     //外部回调
     private var mPlayActionListener: PlayActionListener? = null
@@ -48,6 +51,9 @@ class LvjPlayView @JvmOverloads constructor(context: Context, attrs: AttributeSe
     //当前屏幕方向
     private var mCurrentScreenMode: ScreenMode = ScreenMode.Port
 
+    //记录上一次屏幕方向 主要用于如果用户直接由横屏变为横屏翻转的的时候 不去在重新removeView
+    private var mLastScreenMode: ScreenMode = ScreenMode.Port
+
     //是否锁定屏幕方向
     private var mIsFullScreenLocked = false
 
@@ -56,6 +62,9 @@ class LvjPlayView @JvmOverloads constructor(context: Context, attrs: AttributeSe
     }
 
     private fun initView() {
+        mContainer = FrameLayout(context)
+        mContainer.setBackgroundColor(Color.BLACK)
+        addView(mContainer, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT))
         //保持屏幕常亮
         keepScreenOn = true
         //播放用的SurfaceView
@@ -69,7 +78,7 @@ class LvjPlayView @JvmOverloads constructor(context: Context, attrs: AttributeSe
         //控制栏
         initControlView()
         //提示View
-        initTipsView()
+//        initTipsView()
         //屏幕方向监听
         initOrientationWatchdog()
         //网络监听
@@ -93,15 +102,15 @@ class LvjPlayView @JvmOverloads constructor(context: Context, attrs: AttributeSe
             val holder = it.holder
             holder.addCallback(object : SurfaceHolder.Callback {
 
-                override fun surfaceCreated(holder: SurfaceHolder?) {
+                override fun surfaceCreated(holder: SurfaceHolder) {
                     logi("surfaceCreated")
                 }
 
-                override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {
+                override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
                     logi("surfaceChanged")
                 }
 
-                override fun surfaceDestroyed(holder: SurfaceHolder?) {
+                override fun surfaceDestroyed(holder: SurfaceHolder) {
                     logi("surfaceDestroyed")
                 }
 
@@ -137,6 +146,7 @@ class LvjPlayView @JvmOverloads constructor(context: Context, attrs: AttributeSe
                 var targetPosition = mCurrentPosition + (fl * 100).toInt()
                 if (targetPosition < 0) targetPosition = 0
                 if (targetPosition > 100) targetPosition = 100
+                logi("targetPosition = $targetPosition")
                 mControlView!!.setVideoPosition(targetPosition)
             }
 
@@ -267,8 +277,7 @@ class LvjPlayView @JvmOverloads constructor(context: Context, attrs: AttributeSe
 
     private fun addSubView(view: View) {
         val params = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
-        params.gravity = Gravity.CENTER
-        addView(view, params)
+        mContainer.addView(view, params)
     }
 
     fun onResume() {
@@ -365,7 +374,7 @@ class LvjPlayView @JvmOverloads constructor(context: Context, attrs: AttributeSe
 
 
     private fun changeScreenMode(targetMode: ScreenMode, isReverse: Boolean) {
-
+        mLastScreenMode = mCurrentScreenMode
         var finalScreenMode = targetMode
 
         if (mIsFullScreenLocked) {
@@ -386,10 +395,44 @@ class LvjPlayView @JvmOverloads constructor(context: Context, attrs: AttributeSe
                 } else {
                     mContext.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
                 }
+                if (mLastScreenMode != ScreenMode.Full) {
+                    logi("land layout change")
+                    setLandLayout()
+                }
             } else if (finalScreenMode == ScreenMode.Port) {
+                setPortraitLayout()
                 mContext.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
             }
         }
+    }
+
+    private fun setPortraitLayout() {
+        (mContainer.parent as ViewGroup).removeView(mContainer)
+        showBar(context as Activity)
+        addView(mContainer, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT))
+    }
+
+    private fun setLandLayout() {
+        val mContext = context as Activity
+        (mContainer.parent as ViewGroup).removeView(mContainer)
+        val contentView: ViewGroup = mContext.findViewById(Window.ID_ANDROID_CONTENT)
+        hideBar(mContext)
+        contentView.addView(mContainer, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT))
+    }
+
+    fun showBar(mContext: Activity) {
+        mContext.window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
+    }
+
+    fun hideBar(mContext: Activity) {
+        mContext.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
     }
 
     /**

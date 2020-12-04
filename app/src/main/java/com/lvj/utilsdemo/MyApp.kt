@@ -29,7 +29,7 @@ class MyApp : Application() {
         instance = this
         ProcessLifecycleOwner.get().lifecycle.addObserver(ProcessLifecycleObserver())
         registerActivityCallbacks()
-        crashHandler()
+//        crashHandler()
 
     }
 

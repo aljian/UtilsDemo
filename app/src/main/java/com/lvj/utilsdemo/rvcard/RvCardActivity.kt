@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.lvj.utilsdemo.GlideApp
 import com.lvj.utilsdemo.R
+import com.lvj.utilsdemo.util.logi
 import kotlinx.android.synthetic.main.activity_rv_card.*
 
 class RvCardActivity : AppCompatActivity() {
@@ -34,12 +35,20 @@ class RvCardActivity : AppCompatActivity() {
 
 
         rv_card.run {
-            layoutManager = OverLayCardLayoutManager(this@RvCardActivity)
+            layoutManager = CardLayoutManager(this@RvCardActivity)
             mAdapter = MyAdapter(this@RvCardActivity)
             adapter = mAdapter
         }
 
-        val itemTouchHelper = ItemTouchHelper(callback)
+
+        val callBack = ItemTouchCallBack(this) {
+            logi("回调 position = $it")
+//            val removeAt = mData.removeAt(it)
+            mData.removeAt(it)
+//            mData.add(0, removeAt)
+            mAdapter?.notifyDataSetChanged()
+        }
+        val itemTouchHelper = ItemTouchHelper(callBack)
         itemTouchHelper.attachToRecyclerView(rv_card)
 
     }
@@ -65,23 +74,23 @@ class RvCardActivity : AppCompatActivity() {
     }
 
 
-    val callback = object : ItemTouchHelper.SimpleCallback(
-        0,
-        ItemTouchHelper.DOWN or ItemTouchHelper.UP or ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-    ) {
-
-        override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-            return true
-        }
-
-        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            val remove: String = mData.removeAt(viewHolder.layoutPosition)
-            mData.add(0, remove);
-            mAdapter?.notifyDataSetChanged()
-
-        }
-
-    }
+//    val callback = object : ItemTouchHelper.SimpleCallback(
+//        0,
+//        ItemTouchHelper.DOWN or ItemTouchHelper.UP or ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+//    ) {
+//
+//        override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
+//            return false
+//        }
+//
+//        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+//            val remove: String = mData.removeAt(viewHolder.layoutPosition)
+//            mData.add(0, remove);
+//            mAdapter?.notifyDataSetChanged()
+//
+//        }
+//
+//    }
 
 
 }
