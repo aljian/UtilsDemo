@@ -11,7 +11,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
-import com.lvj.utilsdemo.util.logi
 import java.util.*
 import kotlin.properties.Delegates
 
@@ -48,7 +47,7 @@ class MyApp : Application() {
     }
 
 
-     class ProcessLifecycleObserver : LifecycleObserver {
+    class ProcessLifecycleObserver : LifecycleObserver {
 
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun enterAppListener() {

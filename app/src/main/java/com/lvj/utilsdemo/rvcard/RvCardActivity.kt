@@ -73,24 +73,4 @@ class RvCardActivity : AppCompatActivity() {
         }
     }
 
-
-//    val callback = object : ItemTouchHelper.SimpleCallback(
-//        0,
-//        ItemTouchHelper.DOWN or ItemTouchHelper.UP or ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-//    ) {
-//
-//        override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-//            return false
-//        }
-//
-//        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-//            val remove: String = mData.removeAt(viewHolder.layoutPosition)
-//            mData.add(0, remove);
-//            mAdapter?.notifyDataSetChanged()
-//
-//        }
-//
-//    }
-
-
 }

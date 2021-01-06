@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         tv_test.setOnClickListener {
-            startActivity(Intent(this, RvCardActivity::class.java))
+            startActivity(Intent(this, RVDemoActivity::class.java))
 //            startActivity(Intent(this, WebActivity::class.java))
         }
 

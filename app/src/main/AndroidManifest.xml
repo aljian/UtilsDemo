@@ -53,6 +53,7 @@
         <activity android:name=".work.WorkDemoActivity" />
         <activity android:name=".WebActivity" />
         <activity android:name=".rvcard.RvCardActivity" />
+        <activity android:name=".RVDemoActivity" />
 
         <service
             android:name=".audio.MyService"
