@@ -51,32 +51,32 @@ class MyApp : Application() {
 
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
         fun enterAppListener() {
-            Log.e("ProcessLifecycle", "ON_CREATE")
+            Log.i("ProcessLifecycle", "ON_CREATE")
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
         fun exitAppListener() {
-            Log.e("ProcessLifecycle", "ON_STOP")
+            Log.i("ProcessLifecycle", "ON_STOP")
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_START)
         fun onAppStart() {
-            Log.e("ProcessLifecycle", "ON_START")
+            Log.i("ProcessLifecycle", "ON_START")
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
         fun onAppResume() {
-            Log.e("ProcessLifecycle", "ON_RESUME")
+            Log.i("ProcessLifecycle", "ON_RESUME")
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
         fun onAppPause() {
-            Log.e("ProcessLifecycle", "ON_PAUSE")
+            Log.i("ProcessLifecycle", "ON_PAUSE")
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         fun onAppDestroy() {
-            Log.e("ProcessLifecycle", "ON_DESTROY")
+            Log.i("ProcessLifecycle", "ON_DESTROY")
         }
     }
 

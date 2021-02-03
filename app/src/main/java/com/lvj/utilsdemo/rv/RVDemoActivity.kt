@@ -1,4 +1,4 @@
-package com.lvj.utilsdemo
+package com.lvj.utilsdemo.rv
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -12,10 +12,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.lvj.utilsdemo.RVDemoActivity.MyAdapter.ViewHolder
+import com.lvj.utilsdemo.R
+import com.lvj.utilsdemo.rv.RVDemoActivity.MyAdapter.ViewHolder
 import com.lvj.utilsdemo.util.logi
 import kotlinx.android.synthetic.main.activity_rv_demo.*
 
@@ -23,13 +23,20 @@ class RVDemoActivity : AppCompatActivity() {
 
     private lateinit var mAdapter: MyAdapter
     private var layoutManager: PagerSnapLayoutManager? = null
-
     private var mCurrentPos = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rv_demo)
 
+        setPageData()
+
+//        btn_start_draw.setOnClickListener {
+//            cv.clear()
+//        }
+    }
+
+    private fun setPageData() {
         val mData = mutableListOf<String>()
         for (i in 0 until 50) {
             mData.add("当前 position = $i")
@@ -45,13 +52,9 @@ class RVDemoActivity : AppCompatActivity() {
         rv_demo.layoutManager = layoutManager
         mAdapter = MyAdapter(this, mData)
         rv_demo.adapter = mAdapter
-        val animator = DefaultItemAnimator()
-        animator.changeDuration = 2000
-        rv_demo.itemAnimator = animator
 
         mCurrentPos = 0
-//        mHandler.sendEmptyMessageDelayed(0, 1000)
-        handler.sendEmptyMessageDelayed(0, 1000)
+        //        mHandler.sendEmptyMessageDelayed(0, 1000)
     }
 
     @SuppressLint("HandlerLeak")
@@ -64,18 +67,7 @@ class RVDemoActivity : AppCompatActivity() {
         }
     }
 
-    private val handler: Handler = Handler {
-        timer()
-        return@Handler true
-    }
-
-    private fun timer() {
-        logi("mCurrentPos = $mCurrentPos")
-        handler.sendEmptyMessageDelayed(0, 1000)
-    }
-
     override fun onDestroy() {
-        handler.removeCallbacksAndMessages(null)
         mHandler.removeCallbacksAndMessages(null)
         super.onDestroy()
     }
@@ -103,6 +95,15 @@ class RVDemoActivity : AppCompatActivity() {
 
         override fun getItemCount() = if (mData.isNullOrEmpty()) 0 else mData.size
 
+        override fun onViewAttachedToWindow(holder: ViewHolder) {
+            super.onViewAttachedToWindow(holder)
+            logi("onViewAttachedToWindow -- ${holder.absoluteAdapterPosition} ")
+        }
+
+        override fun onViewDetachedFromWindow(holder: ViewHolder) {
+            super.onViewDetachedFromWindow(holder)
+            logi("onViewDetachedFromWindow -- ${holder.absoluteAdapterPosition} ")
+        }
     }
 
 

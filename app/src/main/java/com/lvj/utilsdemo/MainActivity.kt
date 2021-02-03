@@ -22,14 +22,14 @@ import com.lvj.utilsdemo.motionLayout.MotionVpActivity
 import com.lvj.utilsdemo.playview.PlayActivity
 import com.lvj.utilsdemo.retrofit.login.LoginActivity
 import com.lvj.utilsdemo.retrofit.ui.HomeArticleActivity
-import com.lvj.utilsdemo.rvcard.RvCardActivity
+import com.lvj.utilsdemo.rv.RVDemoActivity
 import com.lvj.utilsdemo.textspan.RichTextActivity
 import com.lvj.utilsdemo.util.*
 import com.lvj.utilsdemo.view.anim.AnimationActivity
 import com.lvj.utilsdemo.view.behavior.DragViewActivity
+import com.lvj.utilsdemo.view.custom.CustomBitmapActivity
 import com.lvj.utilsdemo.view.share.ShareElementActivity
 import com.lvj.utilsdemo.vp.VpActivity
-import com.lvj.utilsdemo.work.WorkDemoActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         tv_test.setOnClickListener {
+//            startActivity(Intent(this, NaviActivity::class.java))
             startActivity(Intent(this, RVDemoActivity::class.java))
 //            startActivity(Intent(this, WebActivity::class.java))
         }
@@ -62,7 +63,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_work.setOnClickListener {
-            startActivity(Intent(this, WorkDemoActivity::class.java))
+            startActivity(Intent(this, CustomBitmapActivity::class.java))
+//            startActivity(Intent(this, WorkDemoActivity::class.java))
         }
 
         btn_login.setOnClickListener {

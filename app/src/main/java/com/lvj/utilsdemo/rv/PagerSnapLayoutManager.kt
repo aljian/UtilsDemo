@@ -1,11 +1,10 @@
-package com.lvj.utilsdemo
+package com.lvj.utilsdemo.rv
 
 import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.lvj.utilsdemo.util.logi
 
 
 class PagerSnapLayoutManager : LinearLayoutManager, RecyclerView.OnChildAttachStateChangeListener {
@@ -24,7 +23,7 @@ class PagerSnapLayoutManager : LinearLayoutManager, RecyclerView.OnChildAttachSt
 
     override fun onChildViewAttachedToWindow(view: View) {
         //通过这个方法确定当前滑动到哪个页面 在快速来回重复滑动的时候不准确
-//        mSelectedListener?.invoke(getPosition(view))
+        mSelectedListener?.invoke(getPosition(view))
     }
 
     override fun onChildViewDetachedFromWindow(view: View) {

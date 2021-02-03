@@ -10,7 +10,7 @@
 
     <application
         android:name=".MyApp"
-        android:allowBackup="false"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -53,7 +53,10 @@
         <activity android:name=".work.WorkDemoActivity" />
         <activity android:name=".WebActivity" />
         <activity android:name=".rvcard.RvCardActivity" />
-        <activity android:name=".RVDemoActivity" />
+        <activity android:name=".rv.RVDemoActivity" />
+        <activity android:name=".animation.AnimationDemoActivity" />
+        <activity android:name=".view.custom.CustomBitmapActivity" />
+        <activity android:name=".navi.NaviActivity" />
 
         <service
             android:name=".audio.MyService"

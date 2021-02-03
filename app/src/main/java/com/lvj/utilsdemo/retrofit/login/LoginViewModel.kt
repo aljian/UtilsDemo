@@ -1,14 +1,10 @@
 package com.lvj.utilsdemo.retrofit.login
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.lvj.utilsdemo.retrofit.api.BaseEntity
 import com.lvj.utilsdemo.retrofit.api.UserEntity
-import com.lvj.utilsdemo.retrofit.ext.*
-import com.lvj.utilsdemo.util.logi
-import kotlinx.coroutines.launch
-import java.net.ConnectException
-import java.net.UnknownHostException
+import com.lvj.utilsdemo.retrofit.ext.BaseViewModel
+import com.lvj.utilsdemo.retrofit.ext.VmLiveData
+import com.lvj.utilsdemo.retrofit.ext.launchVmRequest
 
 class LoginViewModel : BaseViewModel() {
 
