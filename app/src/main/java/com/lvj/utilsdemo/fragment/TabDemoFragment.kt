@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.lvj.utilsdemo.R
 import com.lvj.utilsdemo.util.loge
 import com.lvj.utilsdemo.util.logi
+import com.shuyu.gsyvideoplayer.GSYVideoManager
 import kotlinx.android.synthetic.main.fragment_tab_demo.*
 
 class TabDemoFragment : Fragment() {
@@ -54,6 +55,8 @@ class TabDemoFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         loge("onDestroy ${this.tag}")
+
+        GSYVideoManager.releaseAllVideos()
     }
 
 

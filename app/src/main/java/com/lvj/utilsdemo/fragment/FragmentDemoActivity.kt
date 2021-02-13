@@ -44,6 +44,7 @@ class FragmentDemoActivity : AppCompatActivity() {
         }
 
         btn_remove.setOnClickListener {
+            if (mTitle.isNullOrEmpty()) return@setOnClickListener
             mTitle.removeAt(0)
             mAdapter.notifyDataSetChanged()
         }

@@ -7,7 +7,7 @@
     <ImageView
         android:id="@+id/item_iv_card"
         android:layout_width="match_parent"
+        android:scaleType="fitXY"
         android:layout_height="200dp"
-        android:layout_marginTop="4dp"
         tools:src="@color/color_red" />
 </FrameLayout>

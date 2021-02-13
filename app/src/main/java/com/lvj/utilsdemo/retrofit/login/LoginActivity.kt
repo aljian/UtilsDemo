@@ -2,13 +2,10 @@ package com.lvj.utilsdemo.retrofit.login
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import com.lvj.utilsdemo.R
-import com.lvj.utilsdemo.util.logi
-import com.lvj.utilsdemo.util.toGsonString
 import com.lvj.utilsdemo.retrofit.ext.vmObserver
+import com.lvj.utilsdemo.util.logi
 import kotlinx.android.synthetic.main.activity_layout_login.*
-import java.lang.NullPointerException
 
 class LoginActivity : BaseActivity() {
 
@@ -43,6 +40,7 @@ class LoginActivity : BaseActivity() {
             onAppComplete = { logi("complete") }
             onReLogin = { logi("relogin") }
         }
+
 
     }
 

@@ -2,8 +2,10 @@ package com.lvj.utilsdemo.playview.utils
 
 import android.content.Context
 import android.hardware.SensorManager
+import android.provider.Settings
 import android.view.OrientationEventListener
 import com.lvj.utilsdemo.playview.Orientation
+import com.lvj.utilsdemo.util.logi
 
 class OrientationWatchDog(context: Context) {
 
@@ -23,7 +25,7 @@ class OrientationWatchDog(context: Context) {
             mLandOrientationListener = object : OrientationEventListener(mContext, SensorManager.SENSOR_DELAY_NORMAL) {
 
                 override fun onOrientationChanged(orientation: Int) {
-                    if (orientation == -1) return
+                    if (orientation == -1 || !isScreenAutoRotate(mContext)) return
                     val isLand = (orientation in 81..99 || orientation in 261..279)
                     val isPort = (orientation < 10 || orientation > 350) || (orientation in 171..189)
 
@@ -94,4 +96,17 @@ class OrientationWatchDog(context: Context) {
         fun changedToPortrait(fromLand: Boolean)
     }
 
+    /**
+     * 判断手机是否开始了自动旋转
+     */
+    fun isScreenAutoRotate(context: Context): Boolean {
+        var screenChange = 0
+        try {
+            // 1表示开启
+            screenChange = Settings.System.getInt(context.contentResolver, Settings.System.ACCELEROMETER_ROTATION);
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return screenChange == 1
+    }
 }

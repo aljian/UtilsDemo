@@ -33,13 +33,15 @@ class PlayActivity : AppCompatActivity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         logi("onConfigurationChanged")
-        updatePlayerView()
+//        updatePlayerView()
     }
 
     override fun onResume() {
         super.onResume()
         logi("onResume")
         updatePlayerView()
+
+        playView.showBar(this)
         playView.onResume()
     }
 
@@ -64,21 +66,10 @@ class PlayActivity : AppCompatActivity() {
     private fun updatePlayerView() {
         val orientation = resources.configuration.orientation
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-            playView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
-
             val layoutParams = playView.layoutParams
             layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
             layoutParams.height = getScreenWidthPx() * 9 / 16
         } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-            playView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    or View.SYSTEM_UI_FLAG_FULLSCREEN
-                    or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
-
             val layoutParams = playView.layoutParams
             layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
             layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
