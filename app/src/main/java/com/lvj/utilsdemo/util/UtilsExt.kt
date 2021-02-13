@@ -11,7 +11,9 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.util.Log
 import android.util.TypedValue
+import android.view.View
 import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import java.io.File
 
@@ -123,4 +125,14 @@ fun isTablet(): Boolean {
             >= Configuration.SCREENLAYOUT_SIZE_LARGE)
 }
 
+
+fun View.showSnackbar(text: String, actionTest: String? = null, duration: Int = Snackbar.LENGTH_SHORT, block: (() -> Unit)? = null) {
+    val snackbar = Snackbar.make(this, text, duration)
+    if (actionTest != null && block != null) {
+        snackbar.setAction(actionTest) {
+            block()
+        }
+    }
+    snackbar.show()
+}
 
